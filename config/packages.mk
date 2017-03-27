@@ -10,7 +10,8 @@ PRODUCT_PACKAGES += \
     tune2fs
 
 PRODUCT_PACKAGES += \
-    bootanimation.zip
+    bootanimation.zip \
+    Changelog.html
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
