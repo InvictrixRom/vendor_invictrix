@@ -70,4 +70,10 @@
     <bool name="config_enableAutoPowerModes">true</bool>
 
     <bool name="config_swipe_up_gesture_setting_available">true</bool>
+
+    <!-- System font packages (overlay in vendor) -->
+    <string-array name="config_fontPackages" translatable="false">
+        <item>com.invictrix.fonts</item>
+    </string-array>
+
 </resources>

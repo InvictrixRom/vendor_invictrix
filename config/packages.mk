@@ -17,3 +17,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     librsjni
 
+# Fonts packages
+PRODUCT_PACKAGES += \
+    invictrix-fonts
