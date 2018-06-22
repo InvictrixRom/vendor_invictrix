@@ -217,13 +217,19 @@ EXTENDED_POST_PROCESS_PROPS := vendor/invictrix/tools/invictrix_process_props.py
 
 # Boot Animation
 PRODUCT_PACKAGES += \
-    bootanimation.zip \
-    Updater \
-    xdelta3
+    bootanimation.zip
 
 # Sign builds if building an official or weekly build
 ifeq ($(filter-out Official Weekly,$(INVICTRIX_BUILD_TYPE)),)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := ../.keys/releasekey
+    ifneq ($(shell hostname),EdgeOfEternity)
+        $(error You can't build an Official or Weekly build)
+    endif
+
+    # Only build on official releases
+    PRODUCT_PACKAGES += \
+        Updater \
+        xdelta3
 endif
 
 # Set custom volume steps
