@@ -9,6 +9,9 @@ PRODUCT_PACKAGES += \
     mke2fs \
     tune2fs
 
+PRODUCT_PACKAGES += \
+    bootanimation.zip
+
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
     librsjni

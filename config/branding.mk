@@ -1,27 +1,45 @@
 # Versioning System
-DU_BASE_VERSION = v13.0
-
-ifndef DU_BUILD_TYPE
-    DU_BUILD_TYPE := UNOFFICIAL
+PRODUCT_VERSION_MAJOR = 9
+PRODUCT_VERSION_MINOR = 0.1
+PRODUCT_VERSION_MAINTENANCE = 1.0
+INVICTRIX_POSTFIX := -$(shell date +"%Y%m%d-%H%M")
+ifdef INVICTRIX_BUILD_EXTRA
+    INVICTRIX_POSTFIX := -$(INVICTRIX_BUILD_EXTRA)
 endif
 
-# Only include DU-Updater for official, weeklies, and rc builds
-ifeq ($(filter-out OFFICIAL WEEKLIES RC,$(DU_BUILD_TYPE)),)
-    PRODUCT_PACKAGES += \
-        DU-Updater
+ifndef INVICTRIX_BUILD_TYPE
+    INVICTRIX_BUILD_TYPE := UNOFFICIAL
 endif
 
-# Sign builds if building an official or weekly build
-ifeq ($(filter-out OFFICIAL WEEKLIES,$(DU_BUILD_TYPE)),)
-    PRODUCT_DEFAULT_DEV_CERTIFICATE := ../.keys/releasekey
-endif
+ROM_FINGERPRINT := Invictrix/$(PLATFORM_VERSION)/$(INVICTRIX_BUILD)/$(shell date +%Y%m%d.%H:%M)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.invictrix.fingerprint=$(ROM_FINGERPRINT)
 
 # Set all versions
-DATE := $(shell date -u +%Y%m%d)
-DU_VERSION := $(TARGET_PRODUCT)-$(DU_BASE_VERSION)-$(DATE)-$(shell date -u +%H%M)-$(DU_BUILD_TYPE)
-TARGET_BACON_NAME := $(DU_VERSION)
+INVICTRIX_VERSION := Invictrix-$(INVICTRIX_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(PRODUCT_VERSION_MAINTENANCE)-$(INVICTRIX_BUILD_TYPE)$(INVICTRIX_POSTFIX)
+INVICTRIX_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(PRODUCT_VERSION_MAINTENANCE)
+INVICTRIX_MOD_VERSION := Invictrix-$(INVICTRIX_BUILD)-$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(PRODUCT_VERSION_MAINTENANCE)-$(INVICTRIX_BUILD_TYPE)$(INVICTRIX_POSTFIX)
+
+export INVICTRIX_BUILD_VERSION
 
 PRODUCT_PROPERTY_OVERRIDES += \
     BUILD_DISPLAY_ID=$(BUILD_ID) \
-    ro.du.version=$(DU_VERSION) \
-    ro.mod.version=$(DU_BUILD_TYPE)-$(DU_BASE_VERSION)-$(DATE)
+    invictrix.ota.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(PRODUCT_VERSION_MAINTENANCE) \
+    ro.invictrix.version=$(INVICTRIX_VERSION) \
+    ro.invictrix.maintainer=$(INVICTRIX_MAINTAINER) \
+    ro.invictrix.build.version=$(INVICTRIX_BUILD_VERSION) \
+    ro.modversion=$(INVICTRIX_MOD_VERSION) \
+    ro.invictrix.buildtype=$(INVICTRIX_BUILD_TYPE)
+
+# Sign builds if building an official or weekly build
+ifeq ($(filter-out Official Weekly,$(INVICTRIX_BUILD_TYPE)),)
+    PRODUCT_DEFAULT_DEV_CERTIFICATE := ../.keys/releasekey
+    ifneq ($(shell hostname),EdgeOf%)
+        $(error You can't build an Official or Weekly build)
+    endif
+
+    # Only build on official releases
+    PRODUCT_PACKAGES += \
+        Updater \
+        xdelta3
+endif

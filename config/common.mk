@@ -25,51 +25,42 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
 PRODUCT_COPY_FILES += \
-    vendor/du/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/du/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/invictrix/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/invictrix/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # Init files
 PRODUCT_COPY_FILES += \
-    vendor/du/prebuilt/common/etc/init.local.rc:system/etc/init/dirtyunicorns.rc
+    vendor/invictrix/prebuilt/common/etc/init.local.rc:system/etc/init/invictrix.rc
 
 # LatinIME gesture typing
-ifneq ($(filter tenderloin,$(TARGET_PRODUCT)),)
-ifneq ($(filter shamu,$(TARGET_PRODUCT)),)
 PRODUCT_COPY_FILES += \
-    vendor/du/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
-    vendor/du/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
-else
-PRODUCT_COPY_FILES += \
-    vendor/du/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
-    vendor/du/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
-endif
-endif
+    vendor/invictrix/prebuilt/common/lib/libjni_latinime.so:system/lib/libjni_latinime.so \
+    vendor/invictrix/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so \
+    vendor/invictrix/prebuilt/common/lib64/libjni_latinime.so:system/lib64/libjni_latinime.so \
+    vendor/invictrix/prebuilt/common/lib64/libjni_latinimegoogle.so:system/lib64/libjni_latinimegoogle.so
 
 # Don't export PS1 in /system/etc/mkshrc.
 PRODUCT_COPY_FILES += \
-    vendor/du/prebuilt/common/etc/mkshrc:system/etc/mkshrc
+    vendor/invictrix/prebuilt/common/etc/mkshrc:system/etc/mkshrc
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/extras/build/tools/backuptool.sh:install/bin/backuptool.sh \
     vendor/extras/build/tools/backuptool.functions:install/bin/backuptool.functions \
-    vendor/extras/build/tools/50-du.sh:system/addon.d/50-du.sh
+    vendor/extras/build/tools/50-invictrix.sh:system/addon.d/50-invictrix.sh
 
 # Packages
-include vendor/du/config/packages.mk
+include vendor/invictrix/config/packages.mk
 
 # Branding
-include vendor/du/config/branding.mk
+include vendor/invictrix/config/branding.mk
 
 # Themes
 include vendor/themes/common.mk
-
-# Bootanimation
-#include vendor/du/config/bootanimation.mk
 
 # Clean cache
 PRODUCT_COPY_FILES += \
     vendor/extras/build/tools/clean_cache.sh:system/bin/clean_cache.sh
 
 # Overlays
-PRODUCT_PACKAGE_OVERLAYS += vendor/du/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += vendor/invictrix/overlay/common
