@@ -34,7 +34,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Sign builds if building an official or weekly build
 ifeq ($(filter-out Official Weekly,$(INVICTRIX_BUILD_TYPE)),)
     PRODUCT_DEFAULT_DEV_CERTIFICATE := ../.keys/releasekey
-    ifneq ($(shell hostname),EdgeOf%)
+    ifneq ($(filter-out EdgeOf%, $(shell hostname)),)
         $(error You can't build an Official or Weekly build)
     endif
 
