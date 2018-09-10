@@ -64,3 +64,9 @@ PRODUCT_COPY_FILES += \
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/invictrix/overlay/common
+
+# We modify several neverallows, so let the build proceed
+ifneq ($(TARGET_BUILD_VARIANT),user)
+SELINUX_IGNORE_NEVERALLOWS := true
+endif
+
