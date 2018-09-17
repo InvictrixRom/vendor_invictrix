@@ -1,4 +1,4 @@
-devices=('marlin')
+devices=('marlin' 'h930')
 
 function lunch_devices() {
     add_lunch_combo invictrix_${device}-user
