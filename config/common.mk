@@ -49,9 +49,9 @@ PRODUCT_COPY_FILES += \
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/extras/build/tools/backuptool.sh:install/bin/backuptool.sh \
-    vendor/extras/build/tools/backuptool.functions:install/bin/backuptool.functions \
-    vendor/extras/build/tools/50-invictrix.sh:system/addon.d/50-invictrix.sh
+    vendor/invictrix/build/tools/backuptool.sh:install/bin/backuptool.sh \
+    vendor/invictrix/build/tools/backuptool.functions:install/bin/backuptool.functions \
+    vendor/invictrix/build/tools/50-invictrix.sh:system/addon.d/50-invictrix.sh
 
 # Packages
 include vendor/invictrix/config/packages.mk
@@ -64,7 +64,7 @@ include vendor/themes/common.mk
 
 # Clean cache
 PRODUCT_COPY_FILES += \
-    vendor/extras/build/tools/clean_cache.sh:system/bin/clean_cache.sh
+    vendor/invictrix/build/tools/clean_cache.sh:system/bin/clean_cache.sh
 
 # Overlays
 PRODUCT_PACKAGE_OVERLAYS += vendor/invictrix/overlay/common
