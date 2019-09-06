@@ -102,11 +102,7 @@ endif
 
 # Needed for CONFIG_COMPAT_VDSO, safe to set for all arm64 builds
 ifeq ($(KERNEL_ARCH),arm64)
-<<<<<<< HEAD
-   KERNEL_CROSS_COMPILE += CROSS_COMPILE_ARM32="$(KERNEL_TOOLCHAIN_arm)/arm-linux-androideabi-"
-=======
    KERNEL_CROSS_COMPILE += CROSS_COMPILE_ARM32="arm-linux-androideabi-"
->>>>>>> 25cf081... kernel: Set correct kernel compiler prefixes for aarch64 clang
 endif
 
 # Clear this first to prevent accidental poisoning from env
@@ -152,6 +148,7 @@ endif
 
 # Set use the full path to the make command
 KERNEL_MAKE_CMD := $(BUILD_TOP)/prebuilts/build-tools/$(HOST_OS)-x86/bin/make
+<<<<<<< HEAD
 
 # Set the full path to the gcc command
 GCC_PREBUILTS := $(BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/host
@@ -162,3 +159,5 @@ KERNEL_HOST_TOOLCHAIN_ROOT := $(GCC_PREBUILTS)/x86_64-linux-glibc2.17-4.8/bin/x8
 endif
 KERNEL_MAKE_FLAGS += HOSTCC=$(KERNEL_HOST_TOOLCHAIN_ROOT)gcc
 KERNEL_MAKE_FLAGS += HOSTCXX=$(KERNEL_HOST_TOOLCHAIN_ROOT)g++
+=======
+>>>>>>> 675803d... kernel: Use full path to the make command
