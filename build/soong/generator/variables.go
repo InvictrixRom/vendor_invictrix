@@ -6,12 +6,12 @@ import (
 	"android/soong/android"
 )
 
-func carbonExpandVariables(ctx android.ModuleContext, in string) string {
-	carbonVars := ctx.Config().VendorConfig("carbonVarsPlugin")
+func invictrixExpandVariables(ctx android.ModuleContext, in string) string {
+	invictrixVars := ctx.Config().VendorConfig("invictrixVarsPlugin")
 
 	out, err := android.Expand(in, func(name string) (string, error) {
-		if carbonVars.IsSet(name) {
-			return carbonVars.String(name), nil
+		if invictrixVars.IsSet(name) {
+			return invictrixVars.String(name), nil
 		}
 		// This variable is not for us, restore what the original
 		// variable string will have looked like for an Expand

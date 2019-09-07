@@ -1,6 +1,6 @@
 add_json_str_omitempty = $(if $(strip $(2)),$(call add_json_str, $(1), $(2)))
 
-_json_contents := $(_json_contents)    "Carbon":{$(newline)
+_json_contents := $(_json_contents)    "Invictrix":{$(newline)
 
 $(call add_json_bool,	Needs_text_relocations,					$(filter true,$(TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS)))
 $(call add_json_bool,	Qcom_bsp_legacy,					$(filter true,$(TARGET_USES_QCOM_BSP_LEGACY)))

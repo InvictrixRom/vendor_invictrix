@@ -16,7 +16,7 @@
 #
 
 define build-bootanimation
-    sh vendor/carbon/bootanimation/generate-bootanimation.sh \
+    sh vendor/invictrix/bootanimation/generate-bootanimation.sh \
     $(TARGET_SCREEN_WIDTH) \
     $(TARGET_SCREEN_HEIGHT) \
     $(TARGET_BOOTANIMATION_HALF_RES)

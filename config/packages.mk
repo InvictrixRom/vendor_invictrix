@@ -9,12 +9,12 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-# Telephony
-PRODUCT_PACKAGES += \
-    telephony-ext
+# # Telephony
+# PRODUCT_PACKAGES += \
+#     telephony-ext
 
-PRODUCT_BOOT_JARS += \
-    telephony-ext
+# PRODUCT_BOOT_JARS += \
+#     telephony-ext
 
 # CellBroadcastReceiver
 PRODUCT_PACKAGES += \
@@ -30,7 +30,6 @@ PRODUCT_PACKAGES += \
     Jelly \
     OmniStyle \
     VanillaMusic \
-    CarbonDelta \
     SimpleGallery \
     WeatherClient
 
@@ -72,7 +71,7 @@ endif
 
 # Permissions
 PRODUCT_PACKAGES += \
-    privapp-permissions-carbon.xml
+    privapp-permissions-invictrix.xml
 
 # Exempt DeskClock from Powersave
 PRODUCT_PACKAGES += \
@@ -84,6 +83,6 @@ PRODUCT_PACKAGES += \
 
 # Hidden API whitelist
 PRODUCT_PACKAGES += \
-    carbon-hiddenapi-package-whitelist.xml
+    invictrix-hiddenapi-package-whitelist.xml
 
 -include vendor/qcom/perf/packages.mk

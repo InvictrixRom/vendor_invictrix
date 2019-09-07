@@ -19,12 +19,12 @@
 $(call project-set-path-variant,ril,TARGET_RIL_VARIANT,hardware/ril)
 
 # Include board/platform macros
-include vendor/carbon/build/core/utils.mk
+include vendor/invictrix/build/core/utils.mk
 
 # Include vendor platform definitions
-include vendor/carbon/build/core/vendor/*.mk
+include vendor/invictrix/build/core/vendor/*.mk
 
 # Rules for QCOM targets
-include $(TOPDIR)vendor/carbon/build/core/qcom_target.mk
+include $(TOPDIR)vendor/invictrix/build/core/qcom_target.mk
 
-BUILD_RRO_SYSTEM_PACKAGE := $(TOPDIR)vendor/carbon/build/core/system_rro.mk
+BUILD_RRO_SYSTEM_PACKAGE := $(TOPDIR)vendor/invictrix/build/core/system_rro.mk

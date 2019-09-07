@@ -1,5 +1,4 @@
-PRODUCT_BRAND ?= CarbonROM
-CARBON_BUILD := true
+PRODUCT_BRAND ?= Invictrix
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
@@ -29,21 +28,21 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/carbon/prebuilt/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/carbon/prebuilt/bin/50-hosts.sh:system/addon.d/50-hosts.sh \
-    vendor/carbon/prebuilt/bin/blacklist:system/addon.d/blacklist
+    vendor/invictrix/prebuilt/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/invictrix/prebuilt/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/invictrix/prebuilt/bin/50-hosts.sh:system/addon.d/50-hosts.sh \
+    vendor/invictrix/prebuilt/bin/blacklist:system/addon.d/blacklist
 
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/bin/backuptool_ab.sh:system/bin/backuptool_ab.sh \
-    vendor/carbon/prebuilt/bin/backuptool_ab.functions:system/bin/backuptool_ab.functions \
-    vendor/carbon/prebuilt/bin/backuptool_postinstall.sh:system/bin/backuptool_postinstall.sh
+    vendor/invictrix/prebuilt/bin/backuptool_ab.sh:system/bin/backuptool_ab.sh \
+    vendor/invictrix/prebuilt/bin/backuptool_ab.functions:system/bin/backuptool_ab.functions \
+    vendor/invictrix/prebuilt/bin/backuptool_postinstall.sh:system/bin/backuptool_postinstall.sh
 endif
 
-# carbon init
+# init
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/etc/init.carbon.rc:root/init.carbon.rc
+    vendor/invictrix/prebuilt/etc/init.invictrix.rc:root/init.invictrix.rc
 
 # Enable SIP and VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -51,30 +50,27 @@ PRODUCT_COPY_FILES += \
 
 # Weather client
 PRODUCT_COPY_FILES += \
-    vendor/carbon/prebuilt/etc/sysconfig/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
-    vendor/carbon/prebuilt/etc/sysconfig/org.pixelexperience.weather.client-default.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
+    vendor/invictrix/prebuilt/etc/sysconfig/org.pixelexperience.weather.client.xml:system/etc/permissions/org.pixelexperience.weather.client.xml \
+    vendor/invictrix/prebuilt/etc/sysconfig/org.pixelexperience.weather.client-default.xml:system/etc/default-permissions/org.pixelexperience.weather.client.xml
 
 # Charging sounds
 PRODUCT_COPY_FILES += \
-    vendor/carbon/sounds/BatteryPlugged.ogg:system/media/audio/ui/BatteryPlugged.ogg \
-    vendor/carbon/sounds/BatteryPlugged_48k.ogg:system/media/audio/ui/BatteryPlugged_48k.ogg
+    vendor/invictrix/sounds/BatteryPlugged.ogg:system/media/audio/ui/BatteryPlugged.ogg \
+    vendor/invictrix/sounds/BatteryPlugged_48k.ogg:system/media/audio/ui/BatteryPlugged_48k.ogg
 
 # Additional packages
--include vendor/carbon/config/packages.mk
-
-# Versioning
--include vendor/carbon/config/version.mk
+-include vendor/invictrix/config/packages.mk
 
 # SELinux Policy
--include vendor/carbon/sepolicy/sepolicy.mk
+-include vendor/invictrix/sepolicy/sepolicy.mk
 
 # Themes
-include vendor/carbon/config/accents.mk
-include vendor/carbon/config/themes.mk
+# include vendor/invictrix/config/accents.mk
+# include vendor/invictrix/config/themes.mk
 
 # Add our overlays
-DEVICE_PACKAGE_OVERLAYS += vendor/carbon/overlay/common
+# DEVICE_PACKAGE_OVERLAYS += vendor/invictrix/overlay/common
 
 # Squisher Location
-SQUISHER_SCRIPT := vendor/carbon/tools/squisher
+SQUISHER_SCRIPT := vendor/invictrix/tools/squisher
 
